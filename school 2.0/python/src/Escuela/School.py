@@ -1,4 +1,5 @@
-from Escuela import List
+import time
+from List import Lista
 
 ingresada = 'i'
 rechazada = 'r'
@@ -34,7 +35,7 @@ class Curso:
         self.alumnos.append(alumno)
 
     def push(self, legajo=0, nombre=" ", promedio=0.1, porcentaje=100, tipo="c"):
-        if tipo is "c":
+        if tipo == "c":
             b = Alumno(legajo, nombre, promedio)
         else:
             b = Becado(legajo, nombre, promedio, porcentaje, tipo)
@@ -84,13 +85,13 @@ class Carrera:
 class Instituto:
 
     def __init__(self):
-        self.solicitudes = List.Lista()
-        self.cursos = List.Lista()
+        self.solicitudes = Lista()
+        self.cursos = Lista()
         self.materias = []
         self.carreras = []
 
     def push(self, elemento, lista="s"):
-        if lista is "s":
+        if lista == "s":
             self.pushs(elemento)
         else:
             self.pushc(elemento)    
@@ -106,16 +107,16 @@ class Instituto:
         self.pushs(s)
 
     def buscar(self, palabra, list="s"):
-        if list is "s":
+        if list == "s":
             lista = self.solicitudes
         else:
             lista = self.cursos    
-        laux = List.Lista()
+        laux = Lista()
         encontrado = False
         existe = None
         while lista.isNotEmpty() and not encontrado:
             paux = lista.pop()
-            if paux.num is palabra:
+            if paux.num == palabra:
                 existe = paux
                 encontrado = True
             laux.push(paux)    
@@ -129,21 +130,21 @@ class Instituto:
         return existe    
 
     def pop(self, lista="s", index=0):
-        if lista is "s":
+        if lista == "s":
             f = self.solicitudes
         else:
             f = self.cursos    
         c = f.pop(index)
-        if c is None:
+        if c == None:
             c = "Lista vacia"    
         return c
 
     def show(self, list):
-        if list is "s":
+        if list == "s":
             lista = self.solicitudes
         else:
             lista = self.cursos    
-        laux = List.Lista()
+        laux = Lista()
         while lista.isNotEmpty():
             paux = lista.pop()
             print(paux)
@@ -194,7 +195,6 @@ def main():
     
     niggas.materias.append(m)
     niggas.adds(2, b, niggas.carreras[0], niggas.materias[-1], ingresada)
-    
     niggas.showc()
     print("-----------")
     niggas.showm()
