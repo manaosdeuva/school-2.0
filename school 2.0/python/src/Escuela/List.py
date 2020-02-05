@@ -55,7 +55,8 @@ class Lista:
         self.cantidad -= 1
         f=None
         if aux is not None:
-            f=aux.dato
+            if aux.dato is not None:
+                f=aux
         else:
             f=None    
         return f
@@ -81,18 +82,7 @@ class Lista:
         return self.cantidad != 0
 
     def show(self):
-        print(self.__str__())
-
-    def __str__(self):
-        tostring = ""        
-        aux = Lista()
-        nodo = Nodo()
-        while not self.isEmpty():
-            nodo = self.pop()
-            tostring += nodo.__str__()
-            tostring += "\n"
-            aux.push(nodo)
-        while not aux.isEmpty():
-            nodo = aux.pop()
-            self.push(nodo)  
-        return tostring   
+        aux = self.primero
+        while aux is not None:
+            print(aux.dato)
+            aux = aux.next
